@@ -198,12 +198,18 @@ function twentyseventeen_xili_header_image () {
 				$curlangslug = ( '' == the_curlang() ) ? strtolower( $xili_language->default_lang ) : the_curlang() ;
 
 
-					$headers = get_uploaded_header_images(); // search in uploaded header list
+					$headers = get_uploaded_header_images(); // search in uploaded header list - index = ID
 
 					$this_default_headers = $xili_language_theme_options->get_processed_default_headers () ;
 					if ( ! empty( $this_default_headers ) ) {
-						$headers = array_merge( $this_default_headers, $headers );
+
+						foreach ( $this_default_headers as $header_key => $header ) {
+							$headers[ $header_key ] = $header; // add string indexes to first id indexes 2.22
+						}
+
+						//$headers = array_merge( $this_default_headers, $headers );
 					}
+
 					foreach ( $headers as $header_key => $header ) {
 
 						if ( isset ( $xili_theme_options['xl_header_list'][$curlangslug] ) && $header_key == $xili_theme_options['xl_header_list'][$curlangslug] ) {
