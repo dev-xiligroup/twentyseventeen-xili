@@ -19,10 +19,12 @@ Online demo website is here : http://2017.extend.xiligroup.org
 1. After decompressing "master" .zip from Github, only upload the folder twentyseventeen-xili (near the readme.md) to themes folder , the child-theme files expect to be finally in `wp-content/themes/twentyseventeen-xili/`!
 1. Before updating, don’t forget to backup your own `.mo` language files
 
+## Second release for tests - 2017-01-12
+1. needs parent theme 1.1 (will many fixes for header and JS)
 
 ## First release for tests - 2017-01-04
 1. with 2017 version 01 shipped here https://wordpress.org/themes/twentyseventeen/
 1. starts implementation of child files to activate multilingual features
 1. latest version (in test) of xili-language is here https://github.com/dev-xiligroup/xili-language-plugin
 
-2017-01
+2017-01-12
