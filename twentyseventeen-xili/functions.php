@@ -274,6 +274,15 @@ function twentyseventeen_xilidev_setup_custom_header () {
 add_action( 'after_setup_theme', 'twentyseventeen_xilidev_setup_custom_header', 12 ); // 12 - child translation is active
 
 
+function twentyseventeen_xili_credits () {
+	/* translators: added in child functions by xili */
+	printf( __( 'Multilingual child theme of Twenty Seventeen by %1$s and %2$s', 'twentyseventeen' ),
+		"<a href=\"http://dev.xiligroup.com\">dev.xiligroup</a>",
+		'<span class="site-copyright">' . get_theme_mod('copyright', __('My company','twentyseventeen') ) . '</span>'
+		) ;
+}
+add_action ('twentyseventeen_xili_credits', 'twentyseventeen_xili_credits');
+
 
 // Admin side
 // example with theme_mod_copyright in customizer (filter in xl 2.18.2)
@@ -283,7 +292,7 @@ add_action( 'after_setup_theme', 'twentyseventeen_xilidev_setup_custom_header', 
  *
  * @since
  */
-//require get_stylesheet_directory() . '/inc/customizer.php';
+require get_stylesheet_directory() . '/inc/customizer.php';
 
 
 ?>
