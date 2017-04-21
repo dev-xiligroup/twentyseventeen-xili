@@ -19,6 +19,9 @@ Online demo website is here : http://2017.extend.xiligroup.org
 1. After decompressing "master" .zip from Github, only upload the folder twentyseventeen-xili (near the readme.md) to themes folder , the child-theme files expect to be finally in `wp-content/themes/twentyseventeen-xili/`!
 1. Before updating, don’t forget to backup your own `.mo` language files
 
+## Third release for tests - 2017-04-21
+1. needs parent theme 1.2 (fixes shipped with WP 4.7.4)
+
 ## Second release for tests - 2017-01-12
 1. needs parent theme 1.1 (will many fixes for header and JS)
 
