@@ -1,7 +1,8 @@
 <?php
+// dev.xiligroup.com - msc - 2017-06-09 - first implementation with WP 4.8 Evans
 // dev.xiligroup.com - msc - 2017-01-04 - first implementation
 
-define( 'TWENTYSEVENTEEN_XILI_VER', '1.0'); // as parent style.css
+define( 'TWENTYSEVENTEEN_XILI_VER', '1.3'); // as parent style.css
 
 function twentyseventeen_xilidev_setup () {
 
@@ -148,6 +149,43 @@ add_action( 'after_setup_theme', 'twentyseventeen_xilidev_setup', 11 ); // calle
 
 // Enable shortcodes in text widgets
 add_filter('widget_text','do_shortcode');
+
+/**
+ * define when search form is completed by radio buttons to sub-select language when searching
+ *
+ */
+function special_head() {
+	if ( class_exists('xili_language') ) {	// if temporary disabled
+		// to change search form of widget
+		// if ( is_front_page() || is_category() || is_search() )
+		if ( is_front_page() || is_search() || is_404() ) {
+			add_filter('get_search_form', 'my_langs_in_search_form_2017', 10, 1); // here below
+		}
+	}
+}
+add_action( 'wp_head', 'special_head', 11) ;
+
+/**
+ * add search other languages in form - see functions.php when fired
+ *
+ */
+function my_langs_in_search_form_2017 ( $the_form ) {
+	global $xili_language;
+
+	if ( $xili_language->multiple_lang ) {
+		$form = str_replace ( '</form>', '', $the_form ) . do_shortcode( "[xili-multiple-lang-selector option='list']");
+	} else {
+		$form = str_replace ( '</form>', '', $the_form ) . '<span class="xili-s-radio">' . xiliml_langinsearchform ( $before='<span class="radio-lang">', $after='</span>', false) . '</span>';
+	}
+	$form .= '</form>';
+
+	// if multiple language is set
+
+	//if ( $xili_language->multiple_lang )
+		//$form .=  do_shortcode( "[xili-multiple-lang-selector button-class='search-submit']");
+
+	return $form ;
+}
 
 
 if ( class_exists('xili_language') ) { // if temporary disabled
