@@ -21,7 +21,7 @@ function twentyseventeen_xili_customize_register( $wp_customize ) {
 	));
 
 	$wp_customize->add_setting( 'copyright', array(
-		'sanitize_callback' => 'twentyseventeen_sanitize_text',
+		'sanitize_callback' => 'twentyseventeenx_sanitize_text',
 		'default' => __('My company','twentyseventeen'),
 		'transport' => 'postMessage',
 		) );
@@ -37,7 +37,7 @@ function twentyseventeen_xili_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'twentyseventeen_xili_customize_register', 12 ); // after parent
 
 
-function twentyseventeen_sanitize_text( $input ) {
+function twentyseventeenx_sanitize_text( $input ) {
     return wp_kses_post( force_balance_tags( $input ) );
 }
 
@@ -47,7 +47,7 @@ function twentyseventeen_sanitize_text( $input ) {
  * @since 1.2.0
  */
 function twentyseventeen_xili_customize_preview_js() {
-	wp_enqueue_script( 'twentyseventeen-xili-customize-preview', get_stylesheet_directory_uri() . '/js/customize-preview.js', array( 'customize-preview' ), '20150901', true );
+	wp_enqueue_script( 'twentyseventeen-xili-customize-preview', get_template_directory_uri() . '/assets/js/customize-preview.js', array( 'customize-preview' ), '20170824', true );
 }
 add_action( 'customize_preview_init', 'twentyseventeen_xili_customize_preview_js' );
 ?>
